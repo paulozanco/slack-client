@@ -1,0 +1,16 @@
+(require 'package)
+(add-to-list 'package-archives '("melpa" . "https://melpa.milkbox.net/packages/") t)
+(package-initialize)
+(require 'auto-complete)
+(require 'auto-complete-config)
+(ac-config-default)
+(require 'yasnippet)
+(yas-global-mode 1)
+(defun my:ac-c-header-init ()
+  (require 'auto-complete-c-headers)
+  (add-to-list 'ac-sources 'ac-source-c-headers)
+  (add-to-list 'achead:include-directories '"/Library/Developer/CommandLineTools/usr/lib/clang/9.0.0/include")   ;gcc -xc++ -E -v -
+  )
+(add-hook 'c++-mode-hook 'my:ac-c-header-init)
+(add-hook 'c-mode-hook 'my:ac-c-header-init)
+
