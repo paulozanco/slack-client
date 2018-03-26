@@ -9,10 +9,7 @@
 (defun my:ac-c-header-init ()
   (require 'auto-complete-c-headers)
   (add-to-list 'ac-sources 'ac-source-c-headers)
-  (add-to-list 'achead:include-directories '"
-/Library/Developer/CommandLineTools/usr/lib/clang/9.0.0/include
-/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys
-")   ;gcc -xc++ -E -v -
+  (add-to-list 'achead:include-directories '"/Library/Developer/CommandLineTools/usr/lib/clang/9.0.0/include")   ;gcc -xc++ -E -v -
   )
 (add-hook 'c++-mode-hook 'my:ac-c-header-init)
 (add-hook 'c-mode-hook 'my:ac-c-header-init)
@@ -37,7 +34,4 @@
 (ede-cpp-root-project "slack project" :file "~/slack-client/main.c"
 		      :include-path '("~/slack-client/include"))
 (global-semantic-idle-scheduler-mode 1)
-(defun my:c-mode-common-hook ()
-  (linum-mode 1)
-  )
-(add-hook 'c-mode-common-hook 'my:c-mode-common-hook)
+
